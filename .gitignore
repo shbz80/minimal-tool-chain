@@ -1,0 +1,12 @@
+# java files
+*.class
+*.jar
+
+# Mac OS files
+.DS_Store
+
+# TeX files
+*.pdf
+*.log
+*.aux
+*.bbl
