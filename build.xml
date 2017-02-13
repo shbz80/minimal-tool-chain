@@ -6,7 +6,7 @@
 
 	<target name="build">
 		<mkdir dir="ant-bin" />
-		<javac srcdir="src" destdir="ant-bin" includeantruntime="false" classpath="$cp.lib" />
+		<javac srcdir="src" destdir="ant-bin" includeantruntime="false" classpath="${cp.lib}" />
 	</target>
 
 	<target name="test" depends="build">
@@ -27,7 +27,6 @@
 	<target name="jar" depends="build">
 		<jar destfile="${product.jar}">
 			<fileset dir="ant-bin" includes="**/*.class" excludes="tests/*" />
-			<zipfileset includes="**/*.class" />
 			<manifest>
 				<attribute name="Main-Class" value="${main.class}"/>
 			</manifest>
