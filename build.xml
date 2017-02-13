@@ -6,7 +6,7 @@
 
 	<target name="build">
 		<mkdir dir="ant-bin" />
-		<javac srcdir="src/main/java:src/tests" destdir="ant-bin" includeantruntime="false" classpath="${cp.lib}" />
+		<javac srcdir="src/main/java:src/test/java" destdir="ant-bin" includeantruntime="false" classpath="${cp.lib}" />
 	</target>
 
 	<target name="test" depends="build">
@@ -16,7 +16,7 @@
 			</classpath>
 			<formatter type="brief" usefile="false" />
 			<batchtest>
-				<fileset dir="src">
+				<fileset dir="src/test/java">
 					<include name="tests/*.java" />
 				</fileset>
 			</batchtest>
