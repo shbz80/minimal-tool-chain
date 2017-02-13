@@ -1,4 +1,4 @@
-package test;
+package tests;
 
 import static org.junit.Assert.*;
 
@@ -14,9 +14,10 @@ public class TestVehicleQueue {
 		assertEquals(0, queue.size());
 	}
 
-	@Test
-	public void failingTest() {
-		assertEquals(0,1);
-	}
+	// Example of failing test
+	// @Test
+	// public void failingTest() {
+	//	 assertEquals(0,1);
+	// }
 
 }
