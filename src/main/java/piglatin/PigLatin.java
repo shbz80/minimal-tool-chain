@@ -14,8 +14,8 @@ public class PigLatin {
 		String text_input = sc.next();
 
 		String piggified_word = "oveglay";
-		System.out.println("The piggified word is:");
-		System.out.println(piggified_word);
+		System.out.println("The piggified word is: "+piggified_word);
+		//System.out.println(piggified_word);
 
 
     	/*Console c = System.console();
