@@ -1,4 +1,4 @@
-# minimal-tool-chain
+# wasp-piglatin
 
 This repository contains code for a minimal Java tool chain with
 
@@ -25,3 +25,12 @@ Do
 
 Run the generated jar file by:
 * `java -jar Product.jar`
+
+# Notes
+
+This repository in a fork of minimal-tool-chain which can be found in https://github.com/gorelhedin/minimal-tool-chain
+
+# Authors
+
+Shahbaz Khader
+Rui Oliveira
