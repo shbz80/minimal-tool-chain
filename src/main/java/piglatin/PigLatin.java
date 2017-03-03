@@ -13,7 +13,7 @@ public class PigLatin {
 
 		String text_input = sc.next();
 
-		String piggified_word = "oveglay";
+		String piggified_word = pigiffy(text_input);
 		System.out.println("The piggified word is: "+piggified_word);
 		//System.out.println(piggified_word);
 
@@ -28,10 +28,24 @@ public class PigLatin {
     }
 
     public static String pigiffy(String word) {
-        // Generalize implementation later...
-		String piggified_word = "oveglay";
+        String vowels = "aeiouAEIOU";
+		String piggified = word;
 
-        return piggified_word;
+		if (vowels.contains(""+word.charAt(0))) {
+			piggified = word+"way";
+			return piggified;
+		}
+		else {
+			for (int i = 1; i < word.length(); i++) {
+		    	if (vowels.contains(""+word.charAt(i))) {
+		        	String prefix = word.substring(0, i);
+		        	String suffix = word.substring(i);
+		        	piggified = suffix + prefix + "ay";
+		        	break;
+		    	}
+			}
+		}
+    	return piggified;
     }
 
 }
