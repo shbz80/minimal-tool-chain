@@ -32,6 +32,8 @@ This repository in a fork of minimal-tool-chain which can be found in https://gi
 
 # Authors
 
-Shahbaz Khader
-Rui Oliveira
 Amir Roozbeh
+
+Shahbaz Khader
+
+Rui Oliveira
