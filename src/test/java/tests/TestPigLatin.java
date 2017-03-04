@@ -59,4 +59,21 @@ public class TestPigLatin {
 		}
 	}
 
+	@Test
+	public void checkNumberTranslation() {
+		//  This test checks if some numbers are correctly translated
+		PigLatin pigLatin = new PigLatin();
+
+		int[] inputNumbers = {0, 1, 7, 8, 9};
+		String[] pigWords = {"erozay", "oneway", "evensay", "eightway", "inenay"};
+
+		for (int i=0;i<inputNumbers.length;i++) {
+			if(!(pigWords[i].equals(pigLatin.pigiffyDigit(inputNumbers[i])))) {
+				System.out.println(pigWords[i]);
+				System.out.println(pigLatin.pigiffyDigit(inputNumbers[i]));
+				fail("Test of number translation failed.");
+			}
+		}
+	}
+
 }
