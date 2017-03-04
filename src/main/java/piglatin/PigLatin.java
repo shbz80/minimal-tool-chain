@@ -21,6 +21,15 @@ public class PigLatin {
         // convert to string
         String sentence = sc.nextLine();
         
+        String piggified_sentence = pigiffySentence(sentence);
+        
+        System.out.println("The piggified version of your input is: " + piggified_sentence);
+
+    }
+
+    
+    public static String pigiffySentence(String sentence) {
+
         //TODO rewrite it using split 
         StringTokenizer t = new StringTokenizer(sentence);
         String word ="";
@@ -37,13 +46,12 @@ public class PigLatin {
     		//System.out.print("("+ word + ") ");
             //constrauct the sentence world by world
             piggified_sentence = piggified_sentence + piggified_word + " ";
-            
         }
-        
-      System.out.println("The piggified version of your input is: " + piggified_sentence);
-
+    	
+    	return piggified_sentence;
     }
-
+    
+    
     public static String pigiffy(String word) {
         String vowels = "aeiouAEIOU";
 		String piggified = word;
