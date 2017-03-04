@@ -6,6 +6,12 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class PigLatin {
+
+	// Strings which are Holy Words, these will never be translated
+	// due to their magnificence
+	public static String[] HolyWords = {"Amir", "Shahbaz", "Rui", "Patric", "Celine Dion", "WASP", "semla"};
+
+
     public static void main(String[] args) {
         System.out.println("Input a word to be piggified:");
 
@@ -15,15 +21,6 @@ public class PigLatin {
 
 		String piggified_word = pigiffy(text_input);
 		System.out.println("The piggified word is: "+piggified_word);
-		//System.out.println(piggified_word);
-
-
-    	/*Console c = System.console();
-        if (c == null) {
-            System.err.println("No console.");
-            System.exit(1);
-        }
-		String login = c.readLine("Enter your login: ");*/
 
     }
 
@@ -46,6 +43,19 @@ public class PigLatin {
 			}
 		}
     	return piggified;
+    }
+
+    public static boolean isHolyWord(String word){
+
+    	for (int i=0;i<HolyWords.length;i++) {
+    		boolean isHolyWord = HolyWords[i].equalsIgnoreCase( word );
+			if(isHolyWord) {
+				return true;
+			}
+		}
+
+    	return false;
+
     }
 
 

@@ -76,4 +76,31 @@ public class TestPigLatin {
 		}
 	}
 
+	@Test
+	public void checkHolyWords() {
+		// This test checks if some holy words are detected, and if some non-holy
+		// words are marked as such
+		PigLatin pigLatin = new PigLatin();
+
+		int[] inputNumbers = {0, 1, 7, 8, 9};
+		String[] HolyWords = pigLatin.HolyWords;
+		String[] unholyWords = {"pokemon", "chair", "brexit"};
+
+		for (int i=0;i<HolyWords.length;i++) {
+			if(!(pigLatin.isHolyWord(HolyWords[i]))) {
+				System.out.println(HolyWords[i]);
+				System.out.println("Was classified as being a non holy word.");
+				fail("Test of Holy Words check failed.");
+			}
+		}
+
+		for (int i=0;i<unholyWords.length;i++) {
+			if(pigLatin.isHolyWord(unholyWords[i])) {
+				System.out.println(unholyWords[i]);
+				System.out.println("Was classified as being a holy word.");
+				fail("Test of Holy Words check failed.");
+			}
+		}
+	}
+
 }
