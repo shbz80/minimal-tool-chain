@@ -113,7 +113,6 @@ public class TestPigLatin {
 		if (WordCount(sentance) != WordCount(pigiffySentence)){
 			fail("Messed up on parsing");
 		}
-		
 		// counting a word in sentance
 		public int WordCount (String sc) {
 		     String[] wordArray = sc.trim().split("\\s+");
