@@ -2,6 +2,7 @@ package piglatin;
 
 import java.io.Console;
 import java.util.Arrays;
+import java.util.StringTokenizer;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -13,14 +14,33 @@ public class PigLatin {
 
 
     public static void main(String[] args) {
-        System.out.println("Input a word to be piggified:");
-
+    	//reading from console
+        System.out.println("Input a sentance or word to be piggified:");
+        
         Scanner sc = new Scanner(System.in);
-
-		String text_input = sc.next();
-
-		String piggified_word = pigiffy(text_input);
-		System.out.println("The piggified word is: "+piggified_word);
+        // convert to string
+        String sentence = sc.nextLine();
+        
+        //TODO rewrite it using split 
+        StringTokenizer t = new StringTokenizer(sentence);
+        String word ="";
+        String piggified_sentence = "";
+        while(t.hasMoreTokens())
+        {
+            word = t.nextToken();
+            //TODO we need to check for a dot at the end
+            
+            // TODO we need to check if this is a bad world or not
+            String piggified_word = pigiffy(word);
+            
+            // for debug to see how the sentence is splitted 
+    		//System.out.print("("+ word + ") ");
+            //constrauct the sentence world by world
+            piggified_sentence = piggified_sentence + piggified_word + " ";
+            
+        }
+        
+      System.out.println("The piggified version of your input is: " + piggified_sentence);
 
     }
 
