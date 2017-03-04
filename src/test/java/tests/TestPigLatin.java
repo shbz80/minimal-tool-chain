@@ -52,8 +52,8 @@ public class TestPigLatin {
 
 		for (int i=0;i<inputWords.length;i++) {
 			if(!(pigWords[i].equals(pigLatin.pigiffy(inputWords[i])))) {
-				System.out.println(pigWords[i]);
-				System.out.println(pigLatin.pigiffy(inputWords[i]));
+				//System.out.println(pigWords[i]);
+				//System.out.println(pigLatin.pigiffy(inputWords[i]));
 				fail("Test with words beginning with consonants failed.");
 			}
 		}
