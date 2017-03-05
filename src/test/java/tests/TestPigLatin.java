@@ -148,4 +148,31 @@ public class TestPigLatin {
 			
 	}
 	
+
+
+	@Test
+	public void isContainSpecialCharTest() {
+		// This test checks if we aer not wrongly detect special character
+		
+		String inputString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+		PigLatin pigLatin = new PigLatin();		
+		if (pigLatin.isContainSpecialChar(inputString)){
+			fail("Messed up on dtecting a special character");
+		}
+			
+	}
+
+
+	@Test
+	public void isContainSpecialCharTest2() {
+		// This test checks if we are not missing a special character
+		
+		String inputString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789.";
+		PigLatin pigLatin = new PigLatin();		
+		if (!(pigLatin.isContainSpecialChar(inputString))){
+			fail("Messed up on dtecting a special character");
+		}
+			
+	}
+
 }
