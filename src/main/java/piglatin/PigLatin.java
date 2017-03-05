@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PigLatin {
 
@@ -21,7 +23,7 @@ public class PigLatin {
         // convert to string
         String sentence = sc.nextLine();
 
-        sentence = replacePunctuationMarksBy(sentence, "");
+        //sentence = replacePunctuationMarksBy(sentence, "");
         
         String piggified_sentence = pigiffySentence(sentence);
         
@@ -48,18 +50,38 @@ public class PigLatin {
     
     public static String pigiffySentence(String sentence) {
 
-        //TODO rewrite it using split 
+    	
+    	//TODO rewrite it using split 
+        //StringTokenizer t = new StringTokenizer(sentence, " \t\n\r\f,.:;?![]'");
         StringTokenizer t = new StringTokenizer(sentence);
+
         String word ="";
         String piggified_sentence = "";
+        String chPunch = null; // holder for punctuation char
+        String piggified_word = "";
         while(t.hasMoreTokens())
         {
-            word = t.nextToken();
-            //TODO we need to check for a dot at the end
-            
-            // TODO we need to check if this is a bad world or not
-            String piggified_word = pigiffy(word);
-            
+            word = t.nextToken();                        
+            // if contain special character 
+            if (isContainSpecialChar(word)) {
+            	//Split a word to punctuation and new word
+            	chPunch = word.substring(word.length() - 1);
+            	System.out.println("last character: "+ chPunch  );
+            	// remove the last char - expected punctuation at end of word
+            	word = removeLastChar(word);
+            	System.out.println("word without end char: "+ word );
+            	// if still the punctuation exist means the world is crap 
+            	if (isContainSpecialChar(word)){
+            		// So we are not piggyfiying the word
+            		 piggified_word = word + chPunch;
+            	}else {
+                    // TODO we need to check if this is a bad world or not
+                    piggified_word = pigiffy(word) + chPunch;
+            		}
+            }else{
+            	piggified_word = pigiffy(word);
+            };
+
             // for debug to see how the sentence is splitted 
     		//System.out.print("("+ word + ") ");
             //constrauct the sentence world by world
@@ -103,8 +125,34 @@ public class PigLatin {
     	return false;
 
     }
+    
+    
+    // This will check if the string contain any special character
+    public static boolean isContainSpecialChar(String s) {
+        if (s == null || s.trim().isEmpty()) {
+            System.out.println("Incorrect format of string");
+            System.exit(0);;
+        }
+        Pattern p = Pattern.compile("[^A-Za-z0-9]");
+        Matcher m = p.matcher(s);
+       // boolean b = m.matches();
+        boolean b = m.find();
+        //For testing 
+        //if (b == true)
+           //System.out.println("There is a special character in my string ");
+       // else
+            //System.out.println("There is no special char.");
+        return b;
+    }
 
-
+    // This will remove last char from string
+    public static String removeLastChar (String str) {
+        if (str != null && str.length() > 0) {
+          str = str.substring(0, str.length()-1);
+        }
+        return str;
+    }
+    
     public static String pigiffyDigit(int number) {
 
     	String word;
