@@ -102,6 +102,35 @@ public class TestPigLatin {
 			}
 		}
 	}
+
+	@Test
+	public void replacePunctuationMarksTest() {
+		// 
+		String inputString = "Sometimes commas, can be as slow as full stop. Is someone excited for the weekend? Yes!";	
+		String replacerString = "";
+		String correctString = "Sometimes commas can be as slow as full stop Is someone excited for the weekend Yes";
+
+		PigLatin pigLatin = new PigLatin();
+		String outputString = pigLatin.replacePunctuationMarksBy( inputString, replacerString );
+
+		if(!(outputString.equals(correctString))) {
+			System.out.println(outputString);
+			System.out.println(correctString);
+			fail("Test for punctuation mark replacement failed.");
+		}
+
+		/*replacerString = " ";
+		correctString = "Sometimes commas  can be as slow as full stop  Is someone excited for the weekend  Yes ";		
+		outputString = pigLatin.replacePunctuationMarksBy( inputString, replacerString );
+
+		if(!(outputString.equals(correctString))) {
+			System.out.println(outputString);
+			System.out.println(correctString);
+			fail("Test for punctuation mark replacement failed.");
+		}*/
+
+	}
+ 
 	
 //	@Test
 //	public void checkSentence() {

@@ -20,10 +20,28 @@ public class PigLatin {
         Scanner sc = new Scanner(System.in);
         // convert to string
         String sentence = sc.nextLine();
+
+        sentence = replacePunctuationMarksBy(sentence, "");
         
         String piggified_sentence = pigiffySentence(sentence);
         
         System.out.println("The piggified version of your input is: " + piggified_sentence);
+
+    }
+
+    public static String replacePunctuationMarksBy(String sentence, String replacer) {
+
+    	String[] punctuationMarks = {",", ".", "?", "!"};
+
+    	String correctedString = sentence;
+
+    	for (int i=0;i<punctuationMarks.length;i++) {
+    		
+    		correctedString = correctedString.replace(punctuationMarks[i], replacer);
+
+		}
+
+		return correctedString;
 
     }
 
