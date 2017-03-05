@@ -66,10 +66,10 @@ public class PigLatin {
             if (isContainSpecialChar(word)) {
             	//Split a word to punctuation and new word
             	chPunch = word.substring(word.length() - 1);
-            	System.out.println("last character: "+ chPunch  );
+            	//System.out.println("last character: "+ chPunch  );
             	// remove the last char - expected punctuation at end of word
             	word = removeLastChar(word);
-            	System.out.println("word without end char: "+ word );
+            	//System.out.println("word without end char: "+ word );
             	// if still the punctuation exist means the world is crap 
             	if (isContainSpecialChar(word)){
             		// So we are not piggyfiying the word
