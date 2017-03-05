@@ -132,21 +132,20 @@ public class TestPigLatin {
 	}
  
 	
-//	@Test
-//	public void checkSentence() {
-		// This test checks if the sentance parsed correctly
+	@Test
+	public void checkLatCharRemove() {
+		// This test checks if the last character is been removed from word
 		
-		//String sentance = "This is a test"
-		//String pigiffySentence = pigiffySentence(sentance);
+		String inputString = "This";
+		String expectedResult = "Thi";
+	
+		PigLatin pigLatin = new PigLatin();
+		String outputString = pigLatin.removeLastChar(inputString);
 		
-		//if (WordCount(sentance) != WordCount(pigiffySentence)){
-		//	fail("Messed up on parsing");
-		//}
-		// counting a word in sentance
-		//public int WordCount (String sc) {
-		//     String[] wordArray = sc.trim().split("\\s+");
-		//     int wordCount = wordArray.length;
-		 //    return wordCount;
-
-		//}	
+		if (!(outputString.equals(expectedResult))){
+			fail("Messed up on removing");
+		}
+			
+	}
+	
 }
