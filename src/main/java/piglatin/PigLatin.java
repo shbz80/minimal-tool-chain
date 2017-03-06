@@ -320,4 +320,9 @@ public class PigLatin {
     	  }
     	  /*******************Code to Num2Word conversion***************/
 
+    	  //TODO this function detect a bad word
+    	  public static boolean isBadWord (String st){
+    		 
+    		  return false;
+    	  }
 }

@@ -192,5 +192,18 @@ public class TestPigLatin {
 		assertArrayEquals(correctOutput, output);
 			
 	}
-
+	
+	
+	@Test
+	public void isBadWordTest() {
+		// This test checks if we detect bad word
+		
+		String inputString = "Fuck";
+		PigLatin pigLatin = new PigLatin();		
+		if (!(pigLatin.isBadWord(inputString))){
+			fail("we can not detect a bad word");
+		}
+	}
+	
+	
 }
