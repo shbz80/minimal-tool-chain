@@ -64,7 +64,7 @@ public class PigLatin {
         while(t.hasMoreTokens())
         {
             word = t.nextToken();                        
-            // if contain special character 
+            // if contain special character
             if (isContainSpecialChar(word)) {
             	//Split a word to punctuation and new word
             	chPunch = word.substring(word.length() - 1);
@@ -192,7 +192,7 @@ public class PigLatin {
     }
     
     
-    		/*******************Code to Num2Word conversion***************/
+    		/*******************Code for Num2Word conversion***************/
     	  private static final String[] tensNames = {
     	    "",
     	    " ten",
@@ -250,7 +250,7 @@ public class PigLatin {
     	  }
 
 
-    	  public static String convert(long number) {
+    	  public static String convertPosIntToWords(long number) {
     	    // 0 to 999 999 999 999
     	    if (number == 0) { return "zero"; }
 

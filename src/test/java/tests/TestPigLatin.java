@@ -182,10 +182,10 @@ public class TestPigLatin {
 		
 		PigLatin pigLatin = new PigLatin();
 		
-		String s1=PigLatin.convert(0);
-		String s2=PigLatin.convert(219);
-		String s3=PigLatin.convert(1316);
-		String s4=PigLatin.convert(123456789);
+		String s1=PigLatin.convertPosIntToWords(0);
+		String s2=PigLatin.convertPosIntToWords(219);
+		String s3=PigLatin.convertPosIntToWords(1316);
+		String s4=PigLatin.convertPosIntToWords(123456789);
 		
 		String[] output = {s1, s2, s3, s4};
 	    
