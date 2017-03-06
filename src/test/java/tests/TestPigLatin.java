@@ -103,4 +103,76 @@ public class TestPigLatin {
 		}
 	}
 
+	@Test
+	public void replacePunctuationMarksTest() {
+		// 
+		String inputString = "Sometimes commas, can be as slow as full stop. Is someone excited for the weekend? Yes!";	
+		String replacerString = "";
+		String correctString = "Sometimes commas can be as slow as full stop Is someone excited for the weekend Yes";
+
+		PigLatin pigLatin = new PigLatin();
+		String outputString = pigLatin.replacePunctuationMarksBy( inputString, replacerString );
+
+		if(!(outputString.equals(correctString))) {
+			System.out.println(outputString);
+			System.out.println(correctString);
+			fail("Test for punctuation mark replacement failed.");
+		}
+
+		/*replacerString = " ";
+		correctString = "Sometimes commas  can be as slow as full stop  Is someone excited for the weekend  Yes ";		
+		outputString = pigLatin.replacePunctuationMarksBy( inputString, replacerString );
+
+		if(!(outputString.equals(correctString))) {
+			System.out.println(outputString);
+			System.out.println(correctString);
+			fail("Test for punctuation mark replacement failed.");
+		}*/
+
+	}
+ 
+	
+	@Test
+	public void checkLatCharRemove() {
+		// This test checks if the last character is been removed from word
+		
+		String inputString = "This";
+		String expectedResult = "Thi";
+	
+		PigLatin pigLatin = new PigLatin();
+		String outputString = pigLatin.removeLastChar(inputString);
+		
+		if (!(outputString.equals(expectedResult))){
+			fail("Messed up on removing");
+		}
+			
+	}
+	
+
+
+	@Test
+	public void isContainSpecialCharTest() {
+		// This test checks if we aer not wrongly detect special character
+		
+		String inputString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+		PigLatin pigLatin = new PigLatin();		
+		if (pigLatin.isContainSpecialChar(inputString)){
+			fail("Messed up on dtecting a special character");
+		}
+			
+	}
+
+
+	@Test
+	public void isContainSpecialCharTest2() {
+		// This test checks if we are not missing a special character
+		
+		String inputString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789.";
+		PigLatin pigLatin = new PigLatin();		
+		if (!(pigLatin.isContainSpecialChar(inputString))){
+			fail("Messed up on dtecting a special character");
+		}
+			
+	}
+
 }
