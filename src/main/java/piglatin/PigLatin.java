@@ -18,7 +18,7 @@ public class PigLatin {
 
     public static void main(String[] args) {
     	// reading from console
-        System.out.println("Input a sentence or word to be piggified:");
+        System.out.println("Plesae type a sentence or word to be piggified:");
         
         Scanner sc = new Scanner(System.in);
         // convert to string
