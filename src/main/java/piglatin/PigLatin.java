@@ -14,6 +14,9 @@ public class PigLatin {
 	// Strings which are Holy Words, these will never be translated
 	// due to their magnificence
 	public static String[] HolyWords = {"Amir", "Shahbaz", "Rui", "Patric", "Celine Dion", "WASP", "semla"};
+    
+    // These words must never be seen by innocent eyes
+    public static String[] badWords = {"fuck", "shit", "javla"};
 
 
     public static void main(String[] args) {
@@ -320,9 +323,18 @@ public class PigLatin {
     	  }
     	  /*******************Code to Num2Word conversion***************/
 
-    	  //TODO this function detect a bad word
-    	  public static boolean isBadWord (String st){
-    		 
-    		  return false;
-    	  }
+        public static boolean isBadWord (String st){
+
+            for (int i=0;i<badWords.length;i++) {
+
+                if ( st.toLowerCase().contains(badWords[i].toLowerCase())){
+                    // We don't want any traces of bad words :(
+                    return true;
+                }
+
+            }
+
+            return false;
+        }
+
 }
