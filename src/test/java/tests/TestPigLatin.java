@@ -1,10 +1,8 @@
 package tests;
-
 import static org.junit.Assert.*;
-
 import org.junit.Test;
-
 import piglatin.*;
+//import Num2Words.*;
 
 public class TestPigLatin {
 
@@ -172,6 +170,26 @@ public class TestPigLatin {
 		if (!(pigLatin.isContainSpecialChar(inputString))){
 			fail("Messed up on dtecting a special character");
 		}
+			
+	}
+	
+	@Test
+	public void testEnglishNumberToWords() {
+		// This test checks testEnglishNumberToWords functions
+		
+		int[] input = {0, 219, 1316, 123456789};
+		String[]correctOutput = {"zero","two hundred nineteen", "one thousand three hundred sixteen", "one hundred twenty three million four hundred fifty six thousand seven hundred eighty nine" };
+		
+		PigLatin pigLatin = new PigLatin();
+		
+		String s1=PigLatin.convert(0);
+		String s2=PigLatin.convert(219);
+		String s3=PigLatin.convert(1316);
+		String s4=PigLatin.convert(123456789);
+		
+		String[] output = {s1, s2, s3, s4};
+	    
+		assertArrayEquals(correctOutput, output);
 			
 	}
 
