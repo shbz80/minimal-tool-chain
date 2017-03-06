@@ -17,19 +17,16 @@ public class PigLatin {
 
 
     public static void main(String[] args) {
-    	//reading from console
-        System.out.println("Input a sentance or word to be piggified:");
+    	// reading from console
+        System.out.println("Input a sentence or word to be piggified:");
         
         Scanner sc = new Scanner(System.in);
         // convert to string
         String sentence = sc.nextLine();
-
-        //sentence = replacePunctuationMarksBy(sentence, "");
         
         String piggified_sentence = pigiffySentence(sentence);
         
         System.out.println("The piggified version of your input is: " + piggified_sentence);
-   
 
     }
 
