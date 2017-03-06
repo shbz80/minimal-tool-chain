@@ -26,7 +26,7 @@ public class PigLatin {
         
         String piggified_sentence = pigiffySentence(sentence);
         
-        System.out.println("Yes, The piggified version of your input is:\n" + piggified_sentence);
+        System.out.println("Yes, The piggified version of your input is:" + piggified_sentence);
 
     }
 
