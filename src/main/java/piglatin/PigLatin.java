@@ -1,5 +1,7 @@
 package piglatin;
 
+import piglatin.PigClass;
+
 import java.io.Console;
 import java.util.Arrays;
 import java.util.StringTokenizer;
@@ -10,6 +12,9 @@ import java.util.regex.Pattern;
 import java.text.DecimalFormat;
 
 public class PigLatin {
+
+    // @Shahbaz, here I declare it. From Rui
+    // public static PigClass pig;
 
 	// Strings which are Holy Words, these will never be translated
 	// due to their magnificence
@@ -22,7 +27,7 @@ public class PigLatin {
     public static void main(String[] args) {
     	// reading from console
         System.out.println("Plesae type a sentence or word to be piggified:");
-        
+       
         Scanner sc = new Scanner(System.in);
         // convert to string
         String sentence = sc.nextLine();
@@ -158,6 +163,9 @@ public class PigLatin {
     public static String pigiffyDigit(int number) {
 
     	String word;
+
+        // @Shahbaz, here I call a method. From Rui
+        // pig.oink();
 
     	switch (number) {
 
