@@ -174,27 +174,6 @@ public class TestPigLatin {
 	}
 	
 	@Test
-	public void testEnglishNumberToWords() {
-		// This test checks testEnglishNumberToWords functions
-		
-		int[] input = {0, 219, 1316, 123456789};
-		String[]correctOutput = {"zero","two hundred nineteen", "one thousand three hundred sixteen", "one hundred twenty three million four hundred fifty six thousand seven hundred eighty nine" };
-		
-		PigLatin pigLatin = new PigLatin();
-		
-		String s1=PigLatin.convertPosIntToWords(0);
-		String s2=PigLatin.convertPosIntToWords(219);
-		String s3=PigLatin.convertPosIntToWords(1316);
-		String s4=PigLatin.convertPosIntToWords(123456789);
-		
-		String[] output = {s1, s2, s3, s4};
-	    
-		assertArrayEquals(correctOutput, output);
-			
-	}
-	
-	
-	@Test
 	public void isBadWordTest() {
 		// This test checks if we detect bad word
 		
