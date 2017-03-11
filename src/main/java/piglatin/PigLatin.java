@@ -28,19 +28,13 @@ public class PigLatin {
     //public static String[] badWords = {"fuck", "shit", "javla"};
 	
 	public static InputStream badWordIn = PigLatin.class.getResourceAsStream("BADWORDS.txt");
-
+	public static ArrayList<String> badWords;
 
     public static void main(String[] args) {
     	
     	//Load a bad words from File 
-    	ArrayList<String> badWords = new ArrayList<String>();
+    	badWords = new ArrayList<String>();
     	badWords = readFromFile(badWordIn);
-
-    	//InputStream badWordIn = PigLatin.class.getResourceAsStream("BADWORDS.txt");
-    	
-    	//ArrayList<String> badWords = new ArrayList<String>();
-    
-    	//badWords = readFromFile(badWordIn);
     	
     	// reading from console
         System.out.println("Plesae type a sentence or word to be piggified:");
@@ -100,6 +94,10 @@ public class PigLatin {
             		 piggified_word = word + chPunch;
             	}else {
                     // TODO we need to check if this is a bad world or not
+            		if (isBadWord(word)){
+            			//TODO Replace with random signe !!!!
+            		}
+
                     piggified_word = pigiffy(word) + chPunch;
             		}
             }else{
@@ -348,7 +346,7 @@ public class PigLatin {
     	  }
     	  /*******************Code to Num2Word conversion***************/
 
-        public static boolean isBadWord (String st, ArrayList<String> badWords){
+        public static boolean isBadWord (String st){
 
             for (int i=0;i<badWords.size();i++) {
 
