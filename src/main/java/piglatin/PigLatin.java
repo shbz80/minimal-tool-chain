@@ -30,13 +30,19 @@ public class PigLatin {
 	public static InputStream badWordIn = PigLatin.class.getResourceAsStream("BADWORDS.txt");
 	public static ArrayList<String> badWords;
 
-    public static void main(String[] args) {
-    	
+	public static void init() {
     	//Load a bad words from File 
     	badWords = new ArrayList<String>();
     	badWords = readFromFile(badWordIn);
+	}
+	
+	
+	public static void main(String[] args) {    	
     	
-    	// reading from console
+		//initialization
+		init();
+		
+		// reading from console
         System.out.println("Plesae type a sentence or word to be piggified:");
        
         Scanner sc = new Scanner(System.in);
