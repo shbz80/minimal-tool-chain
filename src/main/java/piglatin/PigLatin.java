@@ -14,7 +14,7 @@ import java.text.DecimalFormat;
 public class PigLatin {
 
     // @Shahbaz, here I declare it. From Rui
-    // public static PigClass pig;
+    // public static PigNumberClass pigNum;
 
 	// Strings which are Holy Words, these will never be translated
 	// due to their magnificence
@@ -165,7 +165,7 @@ public class PigLatin {
     	String word;
 
         // @Shahbaz, here I call a method. From Rui
-        // pig.oink();
+        // pigNum.oink();
 
     	switch (number) {
 

@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.text.DecimalFormat;
 
-public class PigClass {
+public class PigNumberClass {
 
 	int pigs = 3;
 
