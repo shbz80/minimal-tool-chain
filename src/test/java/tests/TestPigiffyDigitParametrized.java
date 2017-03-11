@@ -32,7 +32,7 @@ public class TestPigiffyDigitParametrized{
     @Test
     public void testDigitPigiffying() {
         /*assertEquals(fExpected, Fibonacci.compute(fInput));*/
-        assertEquals( fExpected, PigLatin.pigiffyDigit(fInput) );
+        assertEquals( fExpected, PigNumberClass.pigiffyDigit(fInput) );
     }
 	
 }
