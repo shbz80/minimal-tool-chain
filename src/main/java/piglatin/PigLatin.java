@@ -2,7 +2,11 @@ package piglatin;
 
 import piglatin.PigClass;
 
+import java.io.BufferedReader;
 import java.io.Console;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 import java.io.IOException;
@@ -21,10 +25,23 @@ public class PigLatin {
 	public static String[] HolyWords = {"Amir", "Shahbaz", "Rui", "Patric", "Celine Dion", "WASP", "semla"};
     
     // These words must never be seen by innocent eyes
-    public static String[] badWords = {"fuck", "shit", "javla"};
+    //public static String[] badWords = {"fuck", "shit", "javla"};
+	
+	public static InputStream badWordIn = PigLatin.class.getResourceAsStream("BADWORDS.txt");
 
 
     public static void main(String[] args) {
+    	
+    	//Load a bad words from File 
+    	ArrayList<String> badWords = new ArrayList<String>();
+    	badWords = readFromFile(badWordIn);
+
+    	//InputStream badWordIn = PigLatin.class.getResourceAsStream("BADWORDS.txt");
+    	
+    	//ArrayList<String> badWords = new ArrayList<String>();
+    
+    	//badWords = readFromFile(badWordIn);
+    	
     	// reading from console
         System.out.println("Plesae type a sentence or word to be piggified:");
        
@@ -331,18 +348,40 @@ public class PigLatin {
     	  }
     	  /*******************Code to Num2Word conversion***************/
 
-        public static boolean isBadWord (String st){
+        public static boolean isBadWord (String st, ArrayList<String> badWords){
 
-            for (int i=0;i<badWords.length;i++) {
+            for (int i=0;i<badWords.size();i++) {
 
-                if ( st.toLowerCase().contains(badWords[i].toLowerCase())){
+                if ( st.toLowerCase().contains(badWords.get(i).toLowerCase())){
                     // We don't want any traces of bad words :(
+                	System.out.println(" in method isBadWord - bad word is detected");
                     return true;
                 }
-
             }
 
             return false;
         }
 
+        
+        //This function read the file and return list of word on that file 
+        public static ArrayList<String> readFromFile (InputStream in){
+        	
+        	ArrayList<String> wordsList = new ArrayList<String>();
+        	
+        	try {
+                BufferedReader reader=new BufferedReader(new InputStreamReader(in));
+                String line=null;
+                    while((line=reader.readLine())!=null){
+                        //System.out.println(line);
+                    	wordsList.add(line);
+                    }
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+			return wordsList;
+
+        }
+
+    	
 }
