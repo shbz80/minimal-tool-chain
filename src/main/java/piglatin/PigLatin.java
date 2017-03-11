@@ -79,7 +79,8 @@ public class PigLatin {
         String piggified_word = "";
         while(t.hasMoreTokens())
         {
-            word = t.nextToken();                        
+            word = t.nextToken();  
+        
             // if contain special character
             if (isContainSpecialChar(word)) {
             	//Split a word to punctuation and new word
@@ -88,17 +89,13 @@ public class PigLatin {
             	// remove the last char - expected punctuation at end of word
             	word = removeLastChar(word);
             	//System.out.println("word without end char: "+ word );
+            	
             	// if still the punctuation exist means the world is crap 
             	if (isContainSpecialChar(word)){
             		// So we are not piggyfiying the word
             		 piggified_word = word + chPunch;
             	}else {
-                    // TODO we need to check if this is a bad world or not
-            		if (isBadWord(word)){
-            			//TODO Replace with random signe !!!!
-            		}
-
-                    piggified_word = pigiffy(word) + chPunch;
+                       piggified_word = pigiffy(word) + chPunch;
             		}
             }else{
             	piggified_word = pigiffy(word);
@@ -117,6 +114,12 @@ public class PigLatin {
     public static String pigiffy(String word) {
         String vowels = "aeiouAEIOU";
 		String piggified = word;
+		
+		if (isBadWord(word)){
+			//TODO Replace with random signe !!!!
+			piggified = "BIIIIP";
+			return piggified;
+		}
 
 		if (vowels.contains(""+word.charAt(0))) {
 			piggified = word+"way";
