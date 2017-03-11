@@ -32,7 +32,7 @@ public class TestPigiffyDigitToWordsParametrized{
 
     @Test
     public void testDigitToWords() {
-        assertEquals( fExpected, PigLatin.convertPosIntToWords(fInput) );
+        assertEquals( fExpected, PigNumberClass.convertPosIntToWords(fInput) );
     }
 	
 }
