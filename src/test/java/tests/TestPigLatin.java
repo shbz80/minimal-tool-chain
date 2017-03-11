@@ -184,5 +184,13 @@ public class TestPigLatin {
 		}
 	}
 	
+	@Test
+	public void TestreplacePosIntInSentenceWithWords() {
+		// This test checks if we detect bad word
+		
+		String inputString = "Test number 123 45.6 -2 -2.5 0.0045. That's it!";
+		String correctString = 	"Test number one hundred twenty three 45.6 -2 -2.5 0.0045. That's it!";
+		assertEquals(correctString,PigNumberClass.replacePosIntInSentenceWithWords(inputString)); 
+	}
 	
 }

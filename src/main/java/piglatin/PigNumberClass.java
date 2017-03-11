@@ -1,6 +1,6 @@
 package piglatin;
+import java.util.StringTokenizer;
 import java.text.DecimalFormat;
-
 import piglatin.PigLatin;
 
 public class PigNumberClass {
@@ -175,5 +175,53 @@ public class PigNumberClass {
 	    return result.replaceAll("^\\s+", "").replaceAll("\\b\\s{2,}\\b", " ");
 	  }
 
+	  private static boolean isInteger(String s) {
+	      boolean isValidInteger = false;
+	      try
+	      {
+	         Integer.parseInt(s);
+	 
+	         // s is a valid integer
+	 
+	         isValidInteger = true;
+	      }
+	      catch (NumberFormatException ex)
+	      {
+	         // s is not an integer
+	      }
+	 
+	      return isValidInteger;
+	   }
+	  
+	  public static String replacePosIntInSentenceWithWords(String sentence){
+		  StringTokenizer t = new StringTokenizer(sentence);
+		  String outputSentence = "";
+		  String word, outputWord;
+		  int num;
+		  while(t.hasMoreTokens()){
+	            word = t.nextToken();                        
+	            if (isInteger(word)) {
+	            	num = Integer.parseInt(word);
+	            	if (num >= 0){
+	            		outputWord = convertPosIntToWords(num);
+	            	}
+	            	else{
+	            		outputWord = word;
+	            	}
+	            	 
+	            }
+	            else{
+	            	outputWord = word;
+	            }
+	            if(t.hasMoreTokens()){
+	            	outputSentence = outputSentence + outputWord + " ";
+	            }
+	            else{
+	            	outputSentence = outputSentence + outputWord;
+	            }
+	            
+	        }
+		  return outputSentence;
+	  }
 
 }

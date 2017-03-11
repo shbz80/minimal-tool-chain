@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.text.DecimalFormat;
+
 
 public class PigLatin {
 
@@ -31,8 +31,8 @@ public class PigLatin {
         Scanner sc = new Scanner(System.in);
         // convert to string
         String sentence = sc.nextLine();
-        
-        String piggified_sentence = pigiffySentence(sentence);
+        String newSentence = PigNumberClass.replacePosIntInSentenceWithWords(sentence);
+        String piggified_sentence = pigiffySentence(newSentence);
         
         System.out.println("Yes, The piggified version of your input is:" + piggified_sentence);
 
