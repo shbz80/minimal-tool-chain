@@ -1,7 +1,5 @@
 package piglatin;
 
-import piglatin.PigClass;
-
 import java.io.Console;
 import java.util.Arrays;
 import java.util.StringTokenizer;
