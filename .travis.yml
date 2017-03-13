@@ -1,0 +1,5 @@
+language: java
+install: ant deps
+notifications:
+  email:
+  - shahbaz-shahbazkhader@gmail.com
