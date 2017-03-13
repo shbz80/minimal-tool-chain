@@ -1,5 +1,12 @@
 package piglatin;
+
+import piglatin.PigClass;
+
+import java.io.BufferedReader;
 import java.io.Console;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 import java.io.IOException;
@@ -18,11 +25,24 @@ public class PigLatin {
 	public static String[] HolyWords = {"Amir", "Shahbaz", "Rui", "Patric", "Celine Dion", "WASP", "semla", "WASP"};
     
     // These words must never be seen by innocent eyes
-    public static String[] badWords = {"fuck", "shit", "javla"};
+    //public static String[] badWords = {"fuck", "shit", "javla"};
+	
+	public static InputStream badWordIn = PigLatin.class.getResourceAsStream("BADWORDS.txt");
+	public static ArrayList<String> badWords;
 
-
-    public static void main(String[] args) {
-    	// reading from console
+	public static void init() {
+    	//Load a bad words from File 
+    	badWords = new ArrayList<String>();
+    	badWords = readFromFile(badWordIn);
+	}
+	
+	
+	public static void main(String[] args) {    	
+    	
+		//initialization
+		init();
+		
+		// reading from console
         System.out.println("Plesae type a sentence or word to be piggified:");
        
         Scanner sc = new Scanner(System.in);
@@ -65,7 +85,8 @@ public class PigLatin {
         String piggified_word = "";
         while(t.hasMoreTokens())
         {
-            word = t.nextToken();                        
+            word = t.nextToken();  
+        
             // if contain special character
             if (isContainSpecialChar(word)) {
             	//Split a word to punctuation and new word
@@ -74,13 +95,13 @@ public class PigLatin {
             	// remove the last char - expected punctuation at end of word
             	word = removeLastChar(word);
             	//System.out.println("word without end char: "+ word );
+            	
             	// if still the punctuation exist means the world is crap 
             	if (isContainSpecialChar(word)){
             		// So we are not piggyfiying the word
             		 piggified_word = word + chPunch;
             	}else {
-                    // TODO we need to check if this is a bad world or not
-                    piggified_word = pigiffy(word) + chPunch;
+                       piggified_word = pigiffy(word) + chPunch;
             		}
             }else{
             	piggified_word = pigiffy(word);
@@ -99,6 +120,12 @@ public class PigLatin {
     public static String pigiffy(String word) {
         String vowels = "aeiouAEIOU";
 		String piggified = word;
+		
+		if (isBadWord(word)){
+			//TODO Replace with random signe !!!!
+			piggified = "BIIIIP";
+			return piggified;
+		}
 
 		if (vowels.contains(""+word.charAt(0))) {
 			piggified = word+"way";
@@ -164,16 +191,38 @@ public class PigLatin {
 
         public static boolean isBadWord (String st){
 
-            for (int i=0;i<badWords.length;i++) {
+            for (int i=0;i<badWords.size();i++) {
 
-                if ( st.toLowerCase().contains(badWords[i].toLowerCase())){
+                if ( st.toLowerCase().contains(badWords.get(i).toLowerCase())){
                     // We don't want any traces of bad words :(
+                	System.out.println(" in method isBadWord - bad word is detected");
                     return true;
                 }
-
             }
 
             return false;
         }
 
+        
+        //This function read the file and return list of word on that file 
+        public static ArrayList<String> readFromFile (InputStream in){
+        	
+        	ArrayList<String> wordsList = new ArrayList<String>();
+        	
+        	try {
+                BufferedReader reader=new BufferedReader(new InputStreamReader(in));
+                String line=null;
+                    while((line=reader.readLine())!=null){
+                        //System.out.println(line);
+                    	wordsList.add(line);
+                    }
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+			return wordsList;
+
+        }
+
+    	
 }
