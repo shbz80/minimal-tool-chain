@@ -1,5 +1,4 @@
 package piglatin;
-import test;
 import java.io.Console;
 import java.util.Arrays;
 import java.util.StringTokenizer;
