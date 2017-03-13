@@ -18,7 +18,7 @@ public class PigLatin {
 
 	// Strings which are Holy Words, these will never be translated
 	// due to their magnificence
-	public static String[] HolyWords = {"Amir", "Shahbaz", "Rui", "Patric", "Celine Dion", "WASP", "semla"};
+	public static String[] HolyWords = {"Amir", "Shahbaz", "Rui", "Patric", "Celine Dion", "WASP", "semla", "WASP"};
     
     // These words must never be seen by innocent eyes
     public static String[] badWords = {"fuck", "shit", "javla"};
