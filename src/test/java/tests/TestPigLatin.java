@@ -179,7 +179,7 @@ public class TestPigLatin {
 		
 		String inputString = "Fuck";
 		PigLatin pigLatin = new PigLatin();
-		pigLatin.init();
+		/*pigLatin.init();*/
 		if (!(pigLatin.isBadWord(inputString))){
 			fail("we can not detect a bad word");
 		}

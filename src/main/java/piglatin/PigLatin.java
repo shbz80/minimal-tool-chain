@@ -1,7 +1,5 @@
 package piglatin;
 
-import piglatin.PigClass;
-
 import java.io.BufferedReader;
 import java.io.Console;
 import java.io.InputStream;
@@ -13,6 +11,7 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.io.FileReader;
 
 
 public class PigLatin {
@@ -27,20 +26,13 @@ public class PigLatin {
     // These words must never be seen by innocent eyes
     //public static String[] badWords = {"fuck", "shit", "javla"};
 	
-	public static InputStream badWordIn = PigLatin.class.getResourceAsStream("BADWORDS.txt");
-	public static ArrayList<String> badWords;
-
-	public static void init() {
-    	//Load a bad words from File 
-    	badWords = new ArrayList<String>();
-    	badWords = readFromFile(badWordIn);
-	}
-	
+	public static String badWordsFilename = "./src/BADWORDS.txt";
+	public static ArrayList<String> badWords = readFromFile();
 	
 	public static void main(String[] args) {    	
     	
 		//initialization
-		init();
+		/*init();*/
 		
 		// reading from console
         System.out.println("Plesae type a sentence or word to be piggified:");
@@ -51,7 +43,7 @@ public class PigLatin {
         String newSentence = PigNumberClass.replacePosIntInSentenceWithWords(sentence);
         String piggified_sentence = pigiffySentence(newSentence);
         
-        System.out.println("Yes, The piggified version of your input is:" + piggified_sentence);
+        System.out.println("Yes, The piggified version of your input is:\n" + piggified_sentence);
 
     }
 
@@ -195,7 +187,6 @@ public class PigLatin {
 
                 if ( st.toLowerCase().contains(badWords.get(i).toLowerCase())){
                     // We don't want any traces of bad words :(
-                	System.out.println(" in method isBadWord - bad word is detected");
                     return true;
                 }
             }
@@ -205,12 +196,13 @@ public class PigLatin {
 
         
         //This function read the file and return list of word on that file 
-        public static ArrayList<String> readFromFile (InputStream in){
+        public static ArrayList<String> readFromFile (){
         	
         	ArrayList<String> wordsList = new ArrayList<String>();
         	
         	try {
-                BufferedReader reader=new BufferedReader(new InputStreamReader(in));
+                //BufferedReader reader=new BufferedReader(new InputStreamReader(in));
+                BufferedReader reader=new BufferedReader(new FileReader(badWordsFilename));
                 String line=null;
                     while((line=reader.readLine())!=null){
                         //System.out.println(line);
