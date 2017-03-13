@@ -60,15 +60,15 @@ public class TestPigLatin {
 	@Test
 	public void checkNumberTranslation() {
 		//  This test checks if some numbers are correctly translated
-		PigLatin pigLatin = new PigLatin();
+		PigNumberClass pigNum = new PigNumberClass();
 
 		int[] inputNumbers = {0, 1, 7, 8, 9};
 		String[] pigWords = {"erozay", "oneway", "evensay", "eightway", "inenay"};
 
 		for (int i=0;i<inputNumbers.length;i++) {
-			if(!(pigWords[i].equals(pigLatin.pigiffyDigit(inputNumbers[i])))) {
+			if(!(pigWords[i].equals(pigNum.pigiffyDigit(inputNumbers[i])))) {
 				System.out.println(pigWords[i]);
-				System.out.println(pigLatin.pigiffyDigit(inputNumbers[i]));
+				System.out.println(pigNum.pigiffyDigit(inputNumbers[i]));
 				fail("Test of number translation failed.");
 			}
 		}
@@ -185,5 +185,13 @@ public class TestPigLatin {
 		}
 	}
 	
+	@Test
+	public void TestreplacePosIntInSentenceWithWords() {
+		// This test checks if we detect bad word
+		
+		String inputString = "Test number 123 45.6 -2 -2.5 0.0045. That's it!";
+		String correctString = 	"Test number one hundred twenty three 45.6 -2 -2.5 0.0045. That's it!";
+		assertEquals(correctString,PigNumberClass.replacePosIntInSentenceWithWords(inputString)); 
+	}
 	
 }
