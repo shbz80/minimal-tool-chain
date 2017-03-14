@@ -18,6 +18,17 @@ public class PigLatin {
 
 
 	public static void main(String[] args) {    	
+
+        for (int i=0;i<args.length;i++) {
+            
+            if ( args[i].equals("-authors") ){
+
+                printAuthorsInfo();
+                return;
+
+            }
+
+        }
     	
         System.out.println("Type the sentence to be piggified:");
        
@@ -29,6 +40,17 @@ public class PigLatin {
         System.out.println("The piggified version of your input is:\n" + piggified_sentence);
 
     }
+
+    private static void printAuthorsInfo(){
+
+        System.out.println("The bright minds behind this project:");
+        System.out.println("Amir Roozbeh");
+        System.out.println("Shahbaz Khader");
+        System.out.println("Rui Oliveira");
+
+    }
+
+
 
 
     	
