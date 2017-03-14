@@ -25,6 +25,7 @@ Do
 
 Run the generated jar file by:
 * `java -jar Product.jar`
+Try with -verbose or -authors options
 
 Some cool features:
 1. Any positive integers in the sentence will be translated into Piglatin words.
