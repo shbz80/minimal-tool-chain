@@ -26,6 +26,9 @@ Do
 Run the generated jar file by:
 * `java -jar Product.jar`
 
+Some cool features:
+1. Any positive integers in the sentence will be translated into Piglatin words.
+
 # Notes
 
 This repository in a fork of minimal-tool-chain which can be found in https://github.com/gorelhedin/minimal-tool-chain
