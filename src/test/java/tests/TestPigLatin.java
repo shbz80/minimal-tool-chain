@@ -10,7 +10,7 @@ public class TestPigLatin {
 	public void pigiffyReturnsNonEmptyString() {
 		//  This test simply checks if the PigLatin is returning
 		// a non empty string when we ask it to piggify something.
-		PigLatin pigLatin = new PigLatin();
+		PigLatinConversions pigLatin = new PigLatinConversions();
 
 		String word = "string";
 		String pigWord = pigLatin.pigiffy( word );
@@ -26,7 +26,7 @@ public class TestPigLatin {
 	@Test
 	public void checkWordsBeginWithVowel() {
 		//  This test checks if words that begins with vowel are translated correctly.
-		PigLatin pigLatin = new PigLatin();
+		PigLatinConversions pigLatin = new PigLatinConversions();
 
 		String[] inputWords = {"a", "iphone", "."};
 		String[] pigWords = {"away", "iphoneway", "."};
@@ -43,7 +43,7 @@ public class TestPigLatin {
 	@Test
 	public void checkWordsBeginConsonant() {
 		//  This test checks if words that begins with consonants are translated correctly.
-		PigLatin pigLatin = new PigLatin();
+		PigLatinConversions pigLatin = new PigLatinConversions();
 
 		String[] inputWords = {"cat", "phone", "."};
 		String[] pigWords = {"atcay", "onephay", "."};
@@ -78,7 +78,7 @@ public class TestPigLatin {
 	public void checkHolyWords() {
 		// This test checks if some holy words are detected, and if some non-holy
 		// words are marked as such
-		PigLatin pigLatin = new PigLatin();
+		PigLatinConversions pigLatin = new PigLatinConversions();
 
 		int[] inputNumbers = {0, 1, 7, 8, 9};
 		String[] HolyWords = pigLatin.HolyWords;
@@ -108,7 +108,7 @@ public class TestPigLatin {
 		String replacerString = "";
 		String correctString = "Sometimes commas can be as slow as full stop Is someone excited for the weekend Yes";
 
-		PigLatin pigLatin = new PigLatin();
+		PigLatinConversions pigLatin = new PigLatinConversions();
 		String outputString = pigLatin.replacePunctuationMarksBy( inputString, replacerString );
 
 		if(!(outputString.equals(correctString))) {
@@ -137,7 +137,7 @@ public class TestPigLatin {
 		String inputString = "This";
 		String expectedResult = "Thi";
 	
-		PigLatin pigLatin = new PigLatin();
+		PigLatinConversions pigLatin = new PigLatinConversions();
 		String outputString = pigLatin.removeLastChar(inputString);
 		
 		if (!(outputString.equals(expectedResult))){
@@ -153,7 +153,7 @@ public class TestPigLatin {
 		// This test checks if we aer not wrongly detect special character
 		
 		String inputString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
-		PigLatin pigLatin = new PigLatin();		
+		PigLatinConversions pigLatin = new PigLatinConversions();		
 		if (pigLatin.isContainSpecialChar(inputString)){
 			fail("Messed up on dtecting a special character");
 		}
@@ -166,7 +166,7 @@ public class TestPigLatin {
 		// This test checks if we are not missing a special character
 		
 		String inputString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789.";
-		PigLatin pigLatin = new PigLatin();		
+		PigLatinConversions pigLatin = new PigLatinConversions();		
 		if (!(pigLatin.isContainSpecialChar(inputString))){
 			fail("Messed up on dtecting a special character");
 		}
@@ -178,7 +178,7 @@ public class TestPigLatin {
 		// This test checks if we detect bad word
 		
 		String inputString = "Fuck";
-		PigLatin pigLatin = new PigLatin();
+		PigLatinConversions pigLatin = new PigLatinConversions();
 		/*pigLatin.init();*/
 		if (!(pigLatin.isBadWord(inputString))){
 			fail("we can not detect a bad word");

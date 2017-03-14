@@ -16,205 +16,116 @@ import java.io.FileReader;
 
 public class PigLatin {
 
-    // @Shahbaz, here I declare it. From Rui
-    // public static PigNumberClass pigNum;
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_RED = "\u001B[31m";
+    private static final String ANSI_GREEN = "\u001B[32m";
+    private static final String ANSI_YELLOW = "\u001B[33m";
+    private static final String ANSI_BLUE = "\u001B[34m";
+    private static final String ANSI_CYAN = "\u001B[36m";
 
-	// Strings which are Holy Words, these will never be translated
-	// due to their magnificence
-	public static String[] HolyWords = {"Amir", "Shahbaz", "Rui", "Patric", "Celine Dion", "WASP", "semla", "WASP"};
-    
-    // These words must never be seen by innocent eyes
-    //public static String[] badWords = {"fuck", "shit", "javla"};
-	
-	public static String badWordsFilename = "./src/BADWORDS.txt";
-	public static ArrayList<String> badWords = readFromFile();
-	
 	public static void main(String[] args) {    	
-    	
-		//initialization
-		/*init();*/
-		
-		// reading from console
-        System.out.println("Plesae type a sentence or word to be piggified:");
+
+        for (int i=0;i<args.length;i++) {
+            
+            if ( args[i].equals("-authors") ){
+
+                // If there is the flag authors, show info about them.
+                printAuthorsInfo();
+                return;
+
+            }
+
+            if ( args[i].equals("-verbose") ){
+
+                // If there is a verbose flag, explain the translation process in detail.          
+                readSentenceFromCommandLine(true);
+                return;
+
+            }
+
+
+        }
+
+        if ( args.length > 0 ){
+
+            // The user called the function with weird arguments. Show the help.
+            printUsageWarning();
+            printHelpInfo();
+            return;
+
+        }
+
+    	readSentenceFromCommandLine(false);
+        
+
+    }
+
+    private static void readSentenceFromCommandLine(boolean verbose){
+
+        System.out.println("Type the sentence to be piggified:");
        
         Scanner sc = new Scanner(System.in);
-        // convert to string
         String sentence = sc.nextLine();
         String newSentence = PigNumberClass.replacePosIntInSentenceWithWords(sentence);
-        String piggified_sentence = pigiffySentence(newSentence);
+
+        if (verbose){
+            explainingPrint(sentence);
+        }
         
-        System.out.println("Yes, The piggified version of your input is:\n" + piggified_sentence);
-
-    }
-
-    public static String replacePunctuationMarksBy(String sentence, String replacer) {
-
-    	String[] punctuationMarks = {",", ".", "?", "!"};
-
-    	String correctedString = sentence;
-
-    	for (int i=0;i<punctuationMarks.length;i++) {
-    		
-    		correctedString = correctedString.replace(punctuationMarks[i], replacer);
-
-		}
-
-		return correctedString;
-
-    }
-
-    
-    public static String pigiffySentence(String sentence) {
-
-    	
-    	//TODO rewrite it using split 
-        //StringTokenizer t = new StringTokenizer(sentence, " \t\n\r\f,.:;?![]'");
-        StringTokenizer t = new StringTokenizer(sentence);
-
-        String word ="";
-        String piggified_sentence = "";
-        String chPunch = null; // holder for punctuation char
-        String piggified_word = "";
-        while(t.hasMoreTokens())
-        {
-            word = t.nextToken();  
+        String piggified_sentence = PigLatinConversions.pigiffySentence(newSentence);
         
-            // if contain special character
-            if (isContainSpecialChar(word)) {
-            	//Split a word to punctuation and new word
-            	chPunch = word.substring(word.length() - 1);
-            	//System.out.println("last character: "+ chPunch  );
-            	// remove the last char - expected punctuation at end of word
-            	word = removeLastChar(word);
-            	//System.out.println("word without end char: "+ word );
-            	
-            	// if still the punctuation exist means the world is crap 
-            	if (isContainSpecialChar(word)){
-            		// So we are not piggyfiying the word
-            		 piggified_word = word + chPunch;
-            	}else {
-                       piggified_word = pigiffy(word) + chPunch;
-            		}
-            }else{
-            	piggified_word = pigiffy(word);
-            };
-
-            // for debug to see how the sentence is splitted 
-    		//System.out.print("("+ word + ") ");
-            //constrauct the sentence world by world
-            piggified_sentence = piggified_sentence + piggified_word + " ";
-        }
-    	
-    	return piggified_sentence;
-    }
-    
-    
-    public static String pigiffy(String word) {
-        String vowels = "aeiouAEIOU";
-		String piggified = word;
-		
-		if (isBadWord(word)){
-			//TODO Replace with random signe !!!!
-			piggified = "BIIIIP";
-			return piggified;
-		}
-
-		if (vowels.contains(""+word.charAt(0))) {
-			piggified = word+"way";
-			return piggified;
-		}
-		else {
-			for (int i = 1; i < word.length(); i++) {
-		    	if (vowels.contains(""+word.charAt(i))) {
-		        	String prefix = word.substring(0, i);
-		        	String suffix = word.substring(i);
-		        	piggified = suffix + prefix + "ay";
-		        	break;
-		    	}
-			}
-		}
-    	return piggified;
-    }
-
-    public static boolean isHolyWord(String word){
-
-    	for (int i=0;i<HolyWords.length;i++) {
-    		boolean isHolyWord = HolyWords[i].equalsIgnoreCase( word );
-			if(isHolyWord) {
-				return true;
-			}
-		}
-
-    	return false;
+        System.out.println("The piggified version of your input is:\n" + piggified_sentence);
 
     }
-    
-    
-    // This will check if the string contain any special character
-    public static boolean isContainSpecialChar(String s) {
-        if (s == null || s.trim().isEmpty()) {
-            System.out.println("Incorrect format of string");
-            System.exit(0);;
-        }
-        Pattern p = Pattern.compile("[^A-Za-z0-9]");
-        Matcher m = p.matcher(s);
-       // boolean b = m.matches();
-        boolean b = m.find();
-        //For testing 
-        //if (b == true)
-           //System.out.println("There is a special character in my string ");
-       // else
-            //System.out.println("There is no special char.");
-        return b;
-    }
 
-    // This will remove last char from string
-    public static String removeLastChar (String str) {
-        if (str != null && str.length() > 0) {
-          str = str.substring(0, str.length()-1);
-        }
-        return str;
-    }
-    
-    
-    
-    
-    		
+    private static void explainingPrint(String sentence){
 
-        public static boolean isBadWord (String st){
+        String newSentence = PigNumberClass.replacePosIntInSentenceWithWords(sentence);
+        String piggified_sentence = PigLatinConversions.pigiffySentence(newSentence);
 
-            for (int i=0;i<badWords.size();i++) {
+        String[] inputTokens = newSentence.split(" ");
+        String[] pigTokens = piggified_sentence.split(" ");
 
-                if ( st.toLowerCase().contains(badWords.get(i).toLowerCase())){
-                    // We don't want any traces of bad words :(
-                    return true;
-                }
+
+
+        if (inputTokens.length == pigTokens.length){
+            System.out.println();
+            for (int i=0;i<inputTokens.length;i++) {
+                System.out.println(ANSI_RED + inputTokens[i] + ANSI_YELLOW + "   --->   " + ANSI_GREEN + pigTokens[i] + "\n" + ANSI_RESET);
             }
-
-            return false;
         }
 
-        
-        //This function read the file and return list of word on that file 
-        public static ArrayList<String> readFromFile (){
-        	
-        	ArrayList<String> wordsList = new ArrayList<String>();
-        	
-        	try {
-                //BufferedReader reader=new BufferedReader(new InputStreamReader(in));
-                BufferedReader reader=new BufferedReader(new FileReader(badWordsFilename));
-                String line=null;
-                    while((line=reader.readLine())!=null){
-                        //System.out.println(line);
-                    	wordsList.add(line);
-                    }
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-			return wordsList;
 
-        }
+    }
+
+    private static void printUsageWarning(){
+
+        System.out.println(ANSI_RED + "WARNING: Bad program usage." + ANSI_RESET);
+
+    }
+
+    private static void printHelpInfo(){
+
+        System.out.println("This is program that converts English sentences into Pig Latin.");
+        System.out.println("Pig Lartin is a secret language formed from English by transferring the initial consonant or consonant cluster of each word to the end of the word and adding a vocalic syllable.");
+        System.out.println("Usage:");
+        System.out.println("Just running the program will start a terminal interface where the user can introduce his sentence, and check the piggified result.");
+        System.out.println("Running the program with the flag <-authors> will show information about the development team behind this project.");
+        System.out.println("Running the program with the flag <-verbose> will detail the translation process.");
+
+    }
+
+    private static void printAuthorsInfo(){
+
+        System.out.println(ANSI_CYAN + "The bright minds behind this project:" + ANSI_RESET);
+        System.out.println(ANSI_YELLOW + "Amir Roozbeh" + ANSI_RESET);
+        System.out.println(ANSI_RED + "Shahbaz Khader" + ANSI_RESET);
+        System.out.println(ANSI_GREEN + "Rui Oliveira" + ANSI_RESET);
+
+    }
+
+
+
 
     	
 }

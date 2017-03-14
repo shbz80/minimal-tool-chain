@@ -1,18 +1,13 @@
 package piglatin;
 import java.util.StringTokenizer;
 import java.text.DecimalFormat;
-import piglatin.PigLatin;
+import piglatin.PigLatinConversions;
 
 public class PigNumberClass {
-
-	
     
     public static String pigiffyDigit(int number) {
 
     	String word;
-
-        // @Shahbaz, here I call a method. From Rui
-        // pigNum.oink();
 
     	switch (number) {
 
@@ -40,7 +35,7 @@ public class PigNumberClass {
                      break;
         }
 
-    	String pigiffied_word = PigLatin.pigiffy(word);
+    	String pigiffied_word = PigLatinConversions.pigiffy(word);
 
     	return pigiffied_word;
 
@@ -81,8 +76,6 @@ public class PigNumberClass {
 	    " eighteen",
 	    " nineteen"
 	  };
-
-	  //private EnglishNumberToWords() {}
 
 	  private static String convertLessThanOneThousand(int number) {
 	    String soFar;
