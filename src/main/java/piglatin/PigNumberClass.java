@@ -4,15 +4,10 @@ import java.text.DecimalFormat;
 import piglatin.PigLatin;
 
 public class PigNumberClass {
-
-	
     
     public static String pigiffyDigit(int number) {
 
     	String word;
-
-        // @Shahbaz, here I call a method. From Rui
-        // pigNum.oink();
 
     	switch (number) {
 
@@ -81,8 +76,6 @@ public class PigNumberClass {
 	    " eighteen",
 	    " nineteen"
 	  };
-
-	  //private EnglishNumberToWords() {}
 
 	  private static String convertLessThanOneThousand(int number) {
 	    String soFar;

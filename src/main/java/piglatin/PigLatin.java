@@ -16,34 +16,25 @@ import java.io.FileReader;
 
 public class PigLatin {
 
-    // @Shahbaz, here I declare it. From Rui
-    // public static PigNumberClass pigNum;
 
 	// Strings which are Holy Words, these will never be translated
 	// due to their magnificence
 	public static String[] HolyWords = {"Amir", "Shahbaz", "Rui", "Patric", "Celine Dion", "WASP", "semla", "WASP"};
     
-    // These words must never be seen by innocent eyes
-    //public static String[] badWords = {"fuck", "shit", "javla"};
-	
+    // The words contained in the Bad Words file must not be seen by innocent eyes.
 	public static String badWordsFilename = "./src/BADWORDS.txt";
 	public static ArrayList<String> badWords = readFromFile();
 	
 	public static void main(String[] args) {    	
     	
-		//initialization
-		/*init();*/
-		
-		// reading from console
-        System.out.println("Plesae type a sentence or word to be piggified:");
+        System.out.println("Type the sentence to be piggified:");
        
         Scanner sc = new Scanner(System.in);
-        // convert to string
         String sentence = sc.nextLine();
         String newSentence = PigNumberClass.replacePosIntInSentenceWithWords(sentence);
         String piggified_sentence = pigiffySentence(newSentence);
         
-        System.out.println("Yes, The piggified version of your input is:\n" + piggified_sentence);
+        System.out.println("The piggified version of your input is:\n" + piggified_sentence);
 
     }
 
@@ -83,10 +74,8 @@ public class PigLatin {
             if (isContainSpecialChar(word)) {
             	//Split a word to punctuation and new word
             	chPunch = word.substring(word.length() - 1);
-            	//System.out.println("last character: "+ chPunch  );
             	// remove the last char - expected punctuation at end of word
             	word = removeLastChar(word);
-            	//System.out.println("word without end char: "+ word );
             	
             	// if still the punctuation exist means the world is crap 
             	if (isContainSpecialChar(word)){
@@ -99,9 +88,7 @@ public class PigLatin {
             	piggified_word = pigiffy(word);
             };
 
-            // for debug to see how the sentence is splitted 
-    		//System.out.print("("+ word + ") ");
-            //constrauct the sentence world by world
+            //constrauct the sentence word by word
             piggified_sentence = piggified_sentence + piggified_word + " ";
         }
     	
@@ -114,7 +101,7 @@ public class PigLatin {
 		String piggified = word;
 		
 		if (isBadWord(word)){
-			//TODO Replace with random signe !!!!
+			//TODO Replace with random signs !!!!
 			piggified = "BIIIIP";
 			return piggified;
 		}
@@ -152,19 +139,16 @@ public class PigLatin {
     
     // This will check if the string contain any special character
     public static boolean isContainSpecialChar(String s) {
+
         if (s == null || s.trim().isEmpty()) {
             System.out.println("Incorrect format of string");
             System.exit(0);;
         }
+
         Pattern p = Pattern.compile("[^A-Za-z0-9]");
         Matcher m = p.matcher(s);
-       // boolean b = m.matches();
         boolean b = m.find();
-        //For testing 
-        //if (b == true)
-           //System.out.println("There is a special character in my string ");
-       // else
-            //System.out.println("There is no special char.");
+
         return b;
     }
 
@@ -176,45 +160,40 @@ public class PigLatin {
         return str;
     }
     
-    
-    
-    
-    		
 
-        public static boolean isBadWord (String st){
+    public static boolean isBadWord (String st){
 
-            for (int i=0;i<badWords.size();i++) {
+        for (int i=0;i<badWords.size();i++) {
 
-                if ( st.toLowerCase().contains(badWords.get(i).toLowerCase())){
-                    // We don't want any traces of bad words :(
-                    return true;
-                }
+            if ( st.toLowerCase().contains(badWords.get(i).toLowerCase())){
+                // We don't want any traces of bad words :(
+                return true;
             }
-
-            return false;
         }
+
+        return false;
+    }
 
         
-        //This function read the file and return list of word on that file 
-        public static ArrayList<String> readFromFile (){
-        	
-        	ArrayList<String> wordsList = new ArrayList<String>();
-        	
-        	try {
-                //BufferedReader reader=new BufferedReader(new InputStreamReader(in));
-                BufferedReader reader=new BufferedReader(new FileReader(badWordsFilename));
-                String line=null;
-                    while((line=reader.readLine())!=null){
-                        //System.out.println(line);
-                    	wordsList.add(line);
-                    }
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-			return wordsList;
+    //This function read the file and return list of word on that file 
+    public static ArrayList<String> readFromFile (){
+    	
+    	ArrayList<String> wordsList = new ArrayList<String>();
+    	
+    	try {
 
+            BufferedReader reader=new BufferedReader(new FileReader(badWordsFilename));
+            String line=null;
+                while((line=reader.readLine())!=null){
+                	wordsList.add(line);
+                }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
+		return wordsList;
+
+    }
 
     	
 }
