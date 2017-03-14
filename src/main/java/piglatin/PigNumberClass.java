@@ -1,7 +1,7 @@
 package piglatin;
 import java.util.StringTokenizer;
 import java.text.DecimalFormat;
-import piglatin.PigLatin;
+import piglatin.PigLatinConversions;
 
 public class PigNumberClass {
     
@@ -35,7 +35,7 @@ public class PigNumberClass {
                      break;
         }
 
-    	String pigiffied_word = PigLatin.pigiffy(word);
+    	String pigiffied_word = PigLatinConversions.pigiffy(word);
 
     	return pigiffied_word;
 
