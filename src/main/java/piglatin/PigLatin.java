@@ -27,7 +27,7 @@ public class PigLatin {
 
         for (int i=0;i<args.length;i++) {
             
-            if ( args[i].equals("-authors") ){
+            if ( args[i].equals("--authors") || args[i].equals("-a") ){
 
                 // If there is the flag authors, show info about them.
                 printAuthorsInfo();
@@ -35,7 +35,7 @@ public class PigLatin {
 
             }
 
-            if ( args[i].equals("-verbose") ){
+            if ( args[i].equals("--verbose") || args[i].equals("-v") ){
 
                 // If there is a verbose flag, explain the translation process in detail.          
                 readSentenceFromCommandLine(true);
@@ -43,7 +43,7 @@ public class PigLatin {
 
             }
 
-            if ( args[i].equals("--help") ){
+            if ( args[i].equals("--help") || args[i].equals("-h") ){
 
                 // If there is a help flag, explain the program usage.          
                 printHelpInfo();
@@ -119,9 +119,9 @@ public class PigLatin {
         System.out.println("Pig Lartin is a secret language formed from English by transferring the initial consonant or consonant cluster of each word to the end of the word and adding a vocalic syllable.");
         System.out.println("Usage:");
         System.out.println("Just running the program will start a terminal interface where the user can introduce his sentence, and check the piggified result.");
-        System.out.println("Running the program with the flag <-authors> will show information about the development team behind this project.");
-        System.out.println("Running the program with the flag <-verbose> will detail the translation process.");
-        System.out.println("Running the program with the flag <--help> will explain the program usage.");
+        System.out.println("Running the program with the flag <--authors> or <-a> will show information about the development team behind this project.");
+        System.out.println("Running the program with the flag <--verbose> or <-v> will detail the translation process.");
+        System.out.println("Running the program with the flag <--help> or <-h> will explain the program usage.");
 
     }
 
