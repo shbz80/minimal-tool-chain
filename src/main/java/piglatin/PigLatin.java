@@ -43,13 +43,22 @@ public class PigLatin {
 
             }
 
+            if ( args[i].equals("--help") ){
+
+                // If there is a help flag, explain the program usage.          
+                printHelpInfo();
+                return;
+
+            }
+
 
         }
 
         if ( args.length > 0 ){
 
-            // The user called the function with weird arguments. Show the help.
+            // The user called the function with weird arguments.
             printUsageWarning();
+            // Explain the correct program usage.
             printHelpInfo();
             return;
 
@@ -112,6 +121,7 @@ public class PigLatin {
         System.out.println("Just running the program will start a terminal interface where the user can introduce his sentence, and check the piggified result.");
         System.out.println("Running the program with the flag <-authors> will show information about the development team behind this project.");
         System.out.println("Running the program with the flag <-verbose> will detail the translation process.");
+        System.out.println("Running the program with the flag <--help> will explain the program usage.");
 
     }
 
