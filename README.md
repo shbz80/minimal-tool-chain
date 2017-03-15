@@ -25,7 +25,17 @@ Do
 
 Run the generated jar file by:
 * `java -jar Product.jar`
-Try with -verbose or -authors options
+
+Additional functionality can be used through flags:
+
+usage: `java -jar Product.jar [options]`
+
+--authors (-a)     Shows the authors of the Product
+
+--verbose (-v)     Presents the translation steps in detail
+
+--help    (-h)     Explains the correct usage of the program
+
 
 Some cool features:
 1. Any positive integers in the sentence will be translated into Piglatin words.
