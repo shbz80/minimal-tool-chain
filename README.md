@@ -1,5 +1,7 @@
 # wasp-piglatin
 
+![pig](http://globe-views.com/dcim/dreams/pig/pig-04.jpg)
+
 This repository contains code for a minimal Java tool chain with
 
 * Some Java source code, see `src/main/java`
