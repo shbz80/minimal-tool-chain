@@ -1,6 +1,6 @@
 # wasp-piglatin
 
-![pig](http://globe-views.com/dcim/dreams/pig/pig-04.jpg)
+![pig](http://www.pngall.com/wp-content/uploads/2016/03/Pig.png)
 
 This repository contains code for a minimal Java tool chain with
 
