@@ -1,4 +1,4 @@
-# minimal-tool-chain
+# wasp-piglatin
 
 This repository contains code for a minimal Java tool chain with
 
@@ -25,3 +25,33 @@ Do
 
 Run the generated jar file by:
 * `java -jar Product.jar`
+
+Additional functionality can be used through flags:
+
+usage: `java -jar Product.jar [options]`
+
+--authors (-a)     Shows the authors of the Product
+
+--verbose (-v)     Presents the translation steps in detail
+
+--help    (-h)     Explains the correct usage of the program
+
+
+Some cool features:
+1. Any positive integers in the sentence will be translated into Piglatin words.
+
+# How it looks like
+
+![usage_pic](https://cloud.githubusercontent.com/assets/5601815/23937053/bee88518-0955-11e7-8fab-b89e0c050f81.png)
+
+# Notes
+
+This repository in a fork of minimal-tool-chain which can be found in https://github.com/gorelhedin/minimal-tool-chain
+
+# Authors
+
+Amir Roozbeh
+
+Shahbaz Khader
+
+Rui Oliveira
